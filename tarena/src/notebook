@@ -1,0 +1,34 @@
+
+
+-----------
+集合  ： 数据存储 + 操作算法
+	1） 用于存储 类型一致 的一组对象的数据结构
+	2）类似于数组，但是集合提供了操作算法。
+
+集合的用途:
+	如：歌曲列表 联系人列表 对话记录 游戏英雄 装备 ...
+	3) 集合比数组多了操作算法  便于提高编程效率
+	
+Collection 代表集合，定义了集合的公共方法
+	|	add remove addAll removeAll
+	|	contains size clear iterator ...
+	|-- List 线性表，有先后次序（元素有位置）的集合
+		|	在Collection基础上扩展出按位置操作方法
+		|	 add(index,e) remove(index)
+		|	 set(index,e) get(index)
+		|-- ArrayList 实现了集合的方法
+		|	使用"变长数组"算法实现的List
+		|-- LinkedList
+		|	使用"双向循环链表"实现的List
+	|-- Set 数学集合：无序不重复
+		|-- HashSet
+		
+Iterator 迭代器 :逐一(遍历，迭代)处理集合中的元素
+	 1）Collection 定义了iterator() 方法用于创建Iterator接口实例。子类都实现了这个方法。
+	*2） iterator接口一般都是用"内部类"实现的！
+	i.getClass().getName()
+	 3）Iterator API是给while()语句定制的！
+	 
+
+	
+	
