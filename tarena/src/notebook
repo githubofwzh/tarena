@@ -1,6 +1,6 @@
 
 
-					----------- 01.ts
+---------------------------------------------------- 01.ts
 集合  ： 数据存储 + 操作算法
 	1） 用于存储 类型一致 的一组对象的数据结构
 	2）类似于数组，但是集合提供了操作算法。
@@ -19,7 +19,7 @@ Collection 代表集合，定义了集合的公共方法
 		|-- ArrayList 实现了集合的方法
 		|	使用"变长数组"算法实现的List
 		|-- LinkedList
-		|	使用"双向循环链表"实现的List
+		|	使用"双向循环链表"实现的List,头尾访问快，中部访问慢
 	|-- Set 数学集合：无序不重复
 		|-- HashSet
 		
@@ -32,7 +32,10 @@ Iterator 迭代器 :逐一(遍历，迭代)处理集合中的元素
 	 	迭代器提供了安全删除方法。
 
 快速创建一个集合的方法：Collections.addAll(list,"a","b","c","d");
--------------------------- 排序 和 比较器 ---------------
+
+Collections 是集合的工具类，包含大量的集合工具方法（算法）：填充，排序，查找，二分查找，等
+java2s.com :java api 方法的演示案例
+	-------------------------- 排序 和 比较器 --------------------
 1.对象是如何比较的
 2.如何根据比较结果排序
 3.如何定义"自定义的比较规则"？
@@ -42,6 +45,7 @@ Iterator 迭代器 :逐一(遍历，迭代)处理集合中的元素
 
 排序的算法不用变！Java中的 排序算法是：小到大升序排列。
 
+实现comparable接口时，必须保证equals()相等时，两个对象的comparaTo()结果为0
 利用comparator(比较器) 可以给定自定义的比较规则，
 就可以实现自定义的排序。
 	Comparator 中定义了方法compare(o1,o2)
@@ -50,11 +54,21 @@ Iterator 迭代器 :逐一(遍历，迭代)处理集合中的元素
 利用的方法：
 	Collections.sort(list,比较器)
 就可以进行任意规则的排序
-	
-						------------- 02.ts
-01:39:49   --------- 栈和队列 ---------------------
 
-02：07：00 ------------ map接口 -------------------
+关于自定义排序：
+	1）Comparable(可比较的).接口不常用，是默认比较规则接口，实现这个接口的类可以进行"自然排序"；
+	java api 中有些类型实现了这个接口：String 包装类 时间等，实现这个接口必须保证：equals() 
+	compareTo hashCode的一致性，当两个对象equasl 结果为true时候，compareTo结果为0，
+	同时具有相同的hashCode.
+	2）Comparator（比较器）.用于实现某两个对象的自定义比较大小，没有限定，可以按照任何属性
+	和算法比较.
+	是常用的比较规律.可以利用这个比较器，进行任意的排序.
+	3）java自带的排序算法都是升序排序，可以利用比较规则影响排序结果.
+	
+---------------------------------------------------- 02.ts
+		01:39:49   --------- 栈和队列 ---------------------
+
+		02：07：00 ------------ map接口 -------------------
 hashcode() 和 equals()是一对，要么一起重写，要么一起不重写。
 1.对象相等的时候，hashCode()的值一定一样；
 2.对象不等的时候，hashCode()的值一般是不同的；
@@ -73,7 +87,60 @@ hashcode() 和 equals()是一对，要么一起重写，要么一起不重写。
 	key.equals()方法逐一比较key,确定位置，获取
 	这个位置的数据(value),如果没有数据，就返回null.
 
-散列表的默认加载因子是75%。
-加载因子 是 元素数量  和 散列表的容量的最大比值。
-一旦实际容量的比值超过加载因子，散列表将扩容并重新散列，
+散列表的默认装载因子是75%。
+装载因子 是 元素数量  和 散列表的容量的最大比值。
+一旦实际容量的比值超过装载因子，散列表将扩容并重新散列，
 减少重新散列次数将提高散列表性能。	
+
+
+------------------------------------------------- 03.ts
+		02:08:30 --------------- Map的遍历 -------------------------------
+map.containsKey : 判断集合中是否存在key 对应的 value
+Math.max(value,v) : 返回两个数中的最大值
+map的泛型中只能放包装类，不能是基本数据类型如int,char,...
+1）利用key的迭代
+	|	Set<Object> keys = map.keySet();
+	|	for(Object key:keys){Object value = map.get(key);}
+------------------------------------------------- 04.ts
+2）利用entry(条目)的迭代，
+	Entry是Map的一个内部接口，导入java.unit.Map没用，还必须单独导入java.util.Map.Entry
+	|	Set<Entry<String,Integer>> entrySet = map.entrySet();
+	|	for(Entry entry : entrySet){
+	|		String key = entry.getKey();
+	|		int value = entry.getValue();}
+Random random = new Random(1); -- 《the art of computer perogramming,volume 2》
+	1) 当使用new Random(1)创建随机数发生器，产生
+	的随机数固定的序列，可以实现随机场景重现。(可以被作弊)
+	2) new Randow() 实际上是调用了new Randow(当前时间)
+	
+为什么要对Map进行迭代？
+	1）因为Map提供的算法不能满足要求时候，就需要使用迭代实现算法。
+	比如对Map的内容进行自定义格式输出.
+	2）如何迭代：
+		A 利用Key进行迭代
+		B 利用Entry(key:value)进行迭代
+		C 对Value进行迭代（很少使用）
+	3）迭代的代码是模式化的。
+	
+map 的方法：
+	put get containsKey keySet entrySet remove
+	clear size isEmpty containsValue
+	
+Java 几乎所有的API类都是重写了：（除了StringBuilder）
+	toString equals hashcode
+
+作为Map中的key一定要很好的实现equals hashCode必须成对实现，就是当
+两个对象equals相等时候，一定具有相同的HashCode.如果两个对象不同(不等)
+的时候尽量具有不同hashCode.
+
+无论get/put/remove都是先利用hashCode计算桶的位置,
+再利用equals比较元素的位置!
+
+如果hashcode的值不稳定，或者没有成对重写，会造成Hashmap的工作故障！
+
+Collection 的contains()调用每个元素equals方法，
+如果没有很好的重写equals方法会出现工作故障。
+
+LinkedhashMap PK HashMap:
+	LinkedHashMap -> 能够利用链表保持元素的添加顺序.
+	HashMap:是散列顺序，不能保持元素顺序.
