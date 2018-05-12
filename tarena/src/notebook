@@ -20,8 +20,13 @@ Collection 代表集合，定义了集合的公共方法
 		|	使用"变长数组"算法实现的List
 		|-- LinkedList
 		|	使用"双向循环链表"实现的List,头尾访问快，中部访问慢
+		|-- Vector 变长数组算法 早期的 稍慢(线程安全)
 	|-- Set 数学集合：无序不重复
-		|-- HashSet
+		|-- HashSet：内部是一个HashMap
+			只保留了key部分，Value被屏蔽了！
+Map:
+	|--HashMap 散列表算法 快
+	|--Hashtable 散列表算法 稍慢
 		
 Iterator 迭代器 :逐一(遍历，迭代)处理集合中的元素
 	 1）Collection 定义了iterator() 方法用于创建Iterator接口实例。子类都实现了这个方法。
@@ -69,6 +74,14 @@ java2s.com :java api 方法的演示案例
 		01:39:49   --------- 栈和队列 ---------------------
 
 		02：07：00 ------------ map接口 -------------------
+
+Map:根据key查找value,key是不重复，value可以重复。
+	Map的常见实现类是HashMap散列表，是散列算法实现的，有及其优秀的查询性能！相对于
+	顺序查询性能优秀。
+	查询性能：假如有n个数据，找到其中某个数据消耗的时间成本，一般以最困难的查找为测定。
+	顺序查找：n list.indexOf() list.contains()
+	2分查找：以2为底n的对数 TreeMap:get() containsKey() -- 2分(折半)查找的前提条件是按升序或者降序排列的数据
+	散列查找：<3 HashMap:get() containsKey()
 hashcode() 和 equals()是一对，要么一起重写，要么一起不重写。
 1.对象相等的时候，hashCode()的值一定一样；
 2.对象不等的时候，hashCode()的值一般是不同的；
@@ -144,3 +157,61 @@ Collection 的contains()调用每个元素equals方法，
 LinkedhashMap PK HashMap:
 	LinkedHashMap -> 能够利用链表保持元素的添加顺序.
 	HashMap:是散列顺序，不能保持元素顺序.
+	
+
+		02:20:29----------------------- File -------------------
+new File() 只是创建内存对象，并不是在硬盘创建文件或者文件夹。
+File类对象代表文件，也可以代表文件夹。
+File.separator用来实现目录分级(在java中，不管是unix,linux,windows,都可以用"/"作为路径的分隔符).
+
+如果在软件中需要操作 文件/文件夹时候，就需要使用File API.
+如何使用File API
+	 1）构造器 new File(pathname)
+		A 参数如何定义 pathname(windows/Linux/Unix)
+			3种情况
+			常用:"demo/hello.txt" 通用,Java File会自动适应（别的语言不保证）
+	*2）使用构造器创建的对象，只是内存对象，并不是磁盘上的文件/文件夹！
+	 3）File类提供了API方法，检查硬盘上是否有文件
+	 
+	 
+什么是文件系统
+	操作系统：管理软件的软件
+	软件没有执行之前：是磁盘上的数据+程序文件，
+	如:QQ					QQ.exe
+	属于文件管理：文件系统管理。
+	
+	软件正在执行：正在执行的程序称为进程。
+		进程管理：进度调度
+	正在运行的程序是占用内存：内存管理。
+	
+文件系统管理：如何管理(crud 创建 查找 修改 删除)
+	1）文件系统的物理结构
+		NTFS FAT16 FAT32 exFAT(比较新) HPFS(mac的文件系统) Ext3(unix的文件系统)
+	2）文件系统的逻辑结构
+		windows
+			c:\
+				|--Windows
+				|--Programs Files
+				|--Users
+			d:\
+			e:\
+		linux/unix
+			/
+				|--home
+					|--soft01
+文件系统管理：管理文件系统的物理和逻辑结构，
+提供文件/文件夹的"增删改查" 操作。
+
+File API可以提供在程序中进行文件管理操作，
+也就是在java软件中进行 文件/文件夹 增删改查操作。
+
+File API 提供了方法：文件/文件夹 增删改查操作
+1）构造器:只是创建内存对象，不是创建磁盘文件
+	new File(pathname)
+	new File(parent,path)
+2）此对象在硬盘到底是否存在?
+	使用File API方法 exist() 检查文件/文件夹是否存在
+	
+1.文件信息
+文件大小 int最大只能2g(-2^16~2^16-1),不够用，所以java中返回的是long类型。
+2.目录信息
