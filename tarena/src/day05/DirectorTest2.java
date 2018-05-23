@@ -5,7 +5,7 @@ import java.io.IOException;
 
 /**
  * @author levono
- * FileÀà¶ÔÄ¿Â¼µÄ²Ù×÷·½·¨½éÉÜ
+ * Fileç±»å¯¹ç›®å½•çš„æ“ä½œæ–¹æ³•ä»‹ç»
  */
 public class DirectorTest2 {
 	public static void main(String[] args) {
@@ -15,17 +15,17 @@ public class DirectorTest2 {
 	}
 	
 	/**
-	 * Ôö£ºmkdir() £º´´½¨µ¥¸öÎÄ¼ş¼Ğ
-	 *    mkdirs()£º´´½¨Ò»ÏµÁĞÎÄ¼ş¼Ğ
-	 * ²é :isDirectory()
+	 * å¢ï¼šmkdir() ï¼šåˆ›å»ºå•ä¸ªæ–‡ä»¶å¤¹
+	 *    mkdirs()ï¼šåˆ›å»ºä¸€ç³»åˆ—æ–‡ä»¶å¤¹
+	 * æŸ¥ :isDirectory()
 	 */
 	public static void test() {
-		//ÔÚµ±Ç°Ä¿Â¼ÖĞ´´½¨ÎÄ¼ş¼Ğdemo
+		//åœ¨å½“å‰ç›®å½•ä¸­åˆ›å»ºæ–‡ä»¶å¤¹demo
 		File dir = new File("demo");
-		//success ³É¹¦
+		//success æˆåŠŸ
 		boolean success = dir.mkdir();
 		if(success) {
-			System.out.println("³É¹¦´´½¨ÎÄ¼ş¼Ğ");
+			System.out.println("æˆåŠŸåˆ›å»ºæ–‡ä»¶å¤¹");
 			try {
 				System.out.println(dir.getCanonicalPath());
 			} catch (IOException e) {
@@ -37,13 +37,13 @@ public class DirectorTest2 {
 	}
 	
 	/**
-	 * É¾
+	 * åˆ 
 	 */
 	public static void test2() {
 		File dir = new File("demo");
 		boolean success = dir.delete();
 		if(success) {
-			System.out.println("Ä¿Â¼É¾³ı³É¹¦");
+			System.out.println("ç›®å½•åˆ é™¤æˆåŠŸ");
 			System.out.println(dir.isDirectory());
 			System.out.println(dir.exists());
 			try {
@@ -56,7 +56,7 @@ public class DirectorTest2 {
 	}
 	
 	/**
-	 * Ôö£ºmkdirs()  Ôö¼ÓÒ»ÏµÁĞÎÄ¼ş¼Ğ
+	 * å¢ï¼šmkdirs()  å¢åŠ ä¸€ç³»åˆ—æ–‡ä»¶å¤¹
 	 */
 	public static void test3() {
 		String path = "test/demo/data/abc";

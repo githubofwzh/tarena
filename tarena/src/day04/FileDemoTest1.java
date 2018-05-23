@@ -8,26 +8,26 @@ public class FileDemoTest1 {
 	}
 	
 	/**
-	 * ÑéÖ¤Ä¿Â¼·Ö¸ô·û
+	 * éªŒè¯ç›®å½•åˆ†éš”ç¬¦
 	 */
 	public static void test() {
-		//File ´ú±íÎÄ¼ş/ÎÄ¼ş¼Ğ
-		//´´½¨ÎÄ¼ş¶ÔÏó£ºÖ»ÊÇ´´½¨ÄÚ´æ¶ÔÏó
-		//¹ØÓÚÎÄ¼şÂ·¾¶·Ö¸ô·û£º3ÖÖĞ´·¨
-		// File.separator»á×Ô¶¯±ä»¯£ºwindows -> ·´Ğ±Ïß"\" Linux->"/"
+		//File ä»£è¡¨æ–‡ä»¶/æ–‡ä»¶å¤¹
+		//åˆ›å»ºæ–‡ä»¶å¯¹è±¡ï¼šåªæ˜¯åˆ›å»ºå†…å­˜å¯¹è±¡
+		//å…³äºæ–‡ä»¶è·¯å¾„åˆ†éš”ç¬¦ï¼š3ç§å†™æ³•
+		// File.separatorä¼šè‡ªåŠ¨å˜åŒ–ï¼šwindows -> åæ–œçº¿"\" Linux->"/"
 		String path = "demo"+File.separator+"hello.txt";
 		System.out.println(path);
-		//windows ×¨ÓÃ
+		//windows ä¸“ç”¨
 		String path2 = "demo/hello.txt";
-		//Í¨ÓÃĞ´·¨£ºwindows linux unix(mac)
+		//é€šç”¨å†™æ³•ï¼šwindows linux unix(mac)
 		String path3 = "demo/hello.txt";
-		//´´½¨file¶ÔÏó
+		//åˆ›å»ºfileå¯¹è±¡
 		File file = new File(path3);
 	}
 	
 	/**
-	 * exist() Ê¹ÓÃ£¬ÅĞ¶ÏÎÄ¼şÊÇ·ñÔÚ´ÅÅÌÖĞ´æÔÚ£¬ÊôÓÚ"ÔöÉ¾¸Ä²é"ÖĞµÄ²é
-	 * Ò²ÊÇÎªÁËÑéÖ¤ new File() Ö»´´½¨ÄÚ´æ¶ÔÏó£¬²»ÊÇ´´½¨Ó²ÅÌÎÄ¼ş
+	 * exist() ä½¿ç”¨ï¼Œåˆ¤æ–­æ–‡ä»¶æ˜¯å¦åœ¨ç£ç›˜ä¸­å­˜åœ¨ï¼Œå±äº"å¢åˆ æ”¹æŸ¥"ä¸­çš„æŸ¥
+	 * ä¹Ÿæ˜¯ä¸ºäº†éªŒè¯ new File() åªåˆ›å»ºå†…å­˜å¯¹è±¡ï¼Œä¸æ˜¯åˆ›å»ºç¡¬ç›˜æ–‡ä»¶
 	 */
 	public static void test2()  {
 		String path = "C:/Windows";
@@ -36,21 +36,21 @@ public class FileDemoTest1 {
 		File file = new File(path3);
 		File file1 = new File(path);
 		File file2 = new File(path2);
-		//¼ì²éfile1¶ÔÓ¦µÄÓ²ÅÌÎ»ÖÃÉÏµÄÎÄ¼şÊÇ·ñ´æÔÚ
+		//æ£€æŸ¥file1å¯¹åº”çš„ç¡¬ç›˜ä½ç½®ä¸Šçš„æ–‡ä»¶æ˜¯å¦å­˜åœ¨
 		System.out.println(file1.exists());
 		System.out.println(file2.exists());
 	}
 	
 	/**
-	 * isFile() isDirectory() ·½·¨µÄÊ¾Àı£¬Ò²ÊÇÊôÓÚ"ÔöÉ¾¸Ä²é"ÖĞµÄ²é
-	 * ÅĞ¶ÏÊÇÎÄ¼ş »¹ÊÇ ÎÄ¼ş¼Ğ
+	 * isFile() isDirectory() æ–¹æ³•çš„ç¤ºä¾‹ï¼Œä¹Ÿæ˜¯å±äº"å¢åˆ æ”¹æŸ¥"ä¸­çš„æŸ¥
+	 * åˆ¤æ–­æ˜¯æ–‡ä»¶ è¿˜æ˜¯ æ–‡ä»¶å¤¹
 	 */
 	public static void test3()  {
 		String path = "C:/Windows";
 		String path2 = "D:/Git/gitdemo/tarena/tarena/.classpath";
 		File file1 = new File(path);
 		File file2 = new File(path2);
-		//¼ì²éfile1¶ÔÓ¦µÄÓ²ÅÌÎ»ÖÃÉÏµÄÎÄ¼şÊÇ·ñ´æÔÚ
+		//æ£€æŸ¥file1å¯¹åº”çš„ç¡¬ç›˜ä½ç½®ä¸Šçš„æ–‡ä»¶æ˜¯å¦å­˜åœ¨
 		System.out.println(file1.isFile());
 		System.out.println(file1.isDirectory());
 		System.out.println(file2.isFile());

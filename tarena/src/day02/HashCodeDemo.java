@@ -10,21 +10,21 @@ public class HashCodeDemo {
 	public static void main(String[] args) {
 		List<String> list = new ArrayList<String>();
 		Map<String,Integer> map = 
-				new HashMap<String,Integer>(14000);// ¿¼ÂÇ¼ÓÔØÒò×ÓÒªĞ¡ÓÚ75%£¬Ìá½»²åÈëÔªËØµÄĞÔÄÜ
+				new HashMap<String,Integer>(14000);// è€ƒè™‘åŠ è½½å› å­è¦å°äº75%ï¼Œæäº¤æ’å…¥å…ƒç´ çš„æ€§èƒ½
 		for(int i=0;i<10000;i++) {
 			String key = UUID.randomUUID().toString();
 			list.add(key);
 			map.put(key, i);
 		}
 		String key = list.get(9999);
-		System.out.println("µÚ10000¸öÔªËØ" + key);
-		//²éÕÒÉú²úkey¶ÔÓ¦µÄÎ»ÖÃi
+		System.out.println("ç¬¬10000ä¸ªå…ƒç´ " + key);
+		//æŸ¥æ‰¾ç”Ÿäº§keyå¯¹åº”çš„ä½ç½®i
 		int index = list.indexOf(key);
 		int in = map.get(key);
 		System.out.println(index);
 		System.out.println(in);
 		
-		// ĞÔÄÜ±È½Ï 1084869,606722774
+		// æ€§èƒ½æ¯”è¾ƒ 1084869,606722774
 		// 		 1526894,19363093180
 		long t1 = System.nanoTime();
 		for(int i=0 ;i<10000;i++) {

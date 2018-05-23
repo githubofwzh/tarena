@@ -1,193 +1,193 @@
 
 
 ---------------------------------------------------- 01.ts
-����  �� ���ݴ洢 + �����㷨
-	1�� ���ڴ洢 ����һ�� ��һ���������ݽṹ
-	2�����������飬���Ǽ����ṩ�˲����㷨��
+集合  ： 数据存储 + 操作算法
+	1） 用于存储 类型一致 的一组对象的数据结构
+	2）类似于数组，但是集合提供了操作算法。
 
-���ϵ���;:
-	�磺�����б� ��ϵ���б� �Ի���¼ ��ϷӢ�� װ�� ...
-	3) ���ϱ�������˲����㷨  ������߱��Ч��
+集合的用途:
+	如：歌曲列表 联系人列表 对话记录 游戏英雄 装备 ...
+	3) 集合比数组多了操作算法  便于提高编程效率
 	
-Collection �������ϣ������˼��ϵĹ�������
+Collection 代表集合，定义了集合的公共方法
 	|	add remove addAll removeAll
 	|	contains size clear iterator ...
-	|-- List ���Ա������Ⱥ����Ԫ����λ�ã��ļ���
-		|	��Collection��������չ����λ�ò�������
+	|-- List 线性表，有先后次序（元素有位置）的集合
+		|	在Collection基础上扩展出按位置操作方法
 		|	 add(index,e) remove(index)
 		|	 set(index,e) get(index)
-		|-- ArrayList ʵ���˼��ϵķ���
-		|	ʹ��"�䳤����"�㷨ʵ�ֵ�List
+		|-- ArrayList 实现了集合的方法
+		|	使用"变长数组"算法实现的List
 		|-- LinkedList
-		|	ʹ��"˫��ѭ������"ʵ�ֵ�List,ͷβ���ʿ죬�в�������
-		|-- Vector �䳤�����㷨 ���ڵ� ����(�̰߳�ȫ)
-	|-- Set ��ѧ���ϣ������ظ�
-		|-- HashSet���ڲ���һ��HashMap
-			ֻ������key���֣�Value�������ˣ�
+		|	使用"双向循环链表"实现的List,头尾访问快，中部访问慢
+		|-- Vector 变长数组算法 早期的 稍慢(线程安全)
+	|-- Set 数学集合：无序不重复
+		|-- HashSet：内部是一个HashMap
+			只保留了key部分，Value被屏蔽了！
 Map:
-	|--HashMap ɢ�б��㷨 ��
-	|--Hashtable ɢ�б��㷨 ����
+	|--HashMap 散列表算法 快
+	|--Hashtable 散列表算法 稍慢
 		
-Iterator ������ :��һ(����������)���������е�Ԫ��
-	 1��Collection ������iterator() �������ڴ���Iterator�ӿ�ʵ�������඼ʵ�������������
-	*2�� iterator�ӿ�һ�㶼����"�ڲ���"ʵ�ֵģ�
+Iterator 迭代器 :逐一(遍历，迭代)处理集合中的元素
+	 1）Collection 定义了iterator() 方法用于创建Iterator接口实例。子类都实现了这个方法。
+	*2） iterator接口一般都是用"内部类"实现的！
 	i.getClass().getName()
-	 3��Iterator API�Ǹ�while()��䶨�Ƶģ�
-	*4�������ڼ䣬����ʹ�ü��Ϸ������ӻ���ɾ��Ԫ��
-	 	�������ṩ�˰�ȫɾ��������
+	 3）Iterator API是给while()语句定制的！
+	*4）迭代期间，不能使用集合方法添加或者删除元素
+	 	迭代器提供了安全删除方法。
 
-���ٴ���һ�����ϵķ�����Collections.addAll(list,"a","b","c","d");
+快速创建一个集合的方法：Collections.addAll(list,"a","b","c","d");
 
-Collections �Ǽ��ϵĹ����࣬���������ļ��Ϲ��߷������㷨������䣬���򣬲��ң����ֲ��ң���
-java2s.com :java api ��������ʾ����
-	-------------------------- ���� �� �Ƚ��� --------------------
-1.��������αȽϵ�
-2.��θ��ݱȽϽ������
-3.��ζ���"�Զ���ıȽϹ���"��
-4.�Զ�������
+Collections 是集合的工具类，包含大量的集合工具方法（算法）：填充，排序，查找，二分查找，等
+java2s.com :java api 方法的演示案例
+	-------------------------- 排序 和 比较器 --------------------
+1.对象是如何比较的
+2.如何根据比较结果排序
+3.如何定义"自定义的比较规则"？
+4.自定义排序
 
-Ŀ�ģ����������ʹ�ñȽϽ��Ӱ��������
+目的：是理解如何使用比较结果影响排序结果
 
-������㷨���ñ䣡Java�е� �����㷨�ǣ�С�����������С�
+排序的算法不用变！Java中的 排序算法是：小到大升序排列。
 
-ʵ��comparable�ӿ�ʱ�����뱣֤equals()���ʱ�����������comparaTo()���Ϊ0
-����comparator(�Ƚ���) ���Ը����Զ���ıȽϹ���
-�Ϳ���ʵ���Զ��������
-	Comparator �ж����˷���compare(o1,o2)
-   �Ƚ�o1 o2�������� ����ֵ��>0 =0 <0
+实现comparable接口时，必须保证equals()相等时，两个对象的comparaTo()结果为0
+利用comparator(比较器) 可以给定自定义的比较规则，
+就可以实现自定义的排序。
+	Comparator 中定义了方法compare(o1,o2)
+   比较o1 o2两个对象 返回值：>0 =0 <0
 
-���õķ�����
-	Collections.sort(list,�Ƚ���)
-�Ϳ��Խ���������������
+利用的方法：
+	Collections.sort(list,比较器)
+就可以进行任意规则的排序
 
-�����Զ�������
-	1��Comparable(�ɱȽϵ�).�ӿڲ����ã���Ĭ�ϱȽϹ���ӿڣ�ʵ������ӿڵ�����Խ���"��Ȼ����"��
-	java api ����Щ����ʵ��������ӿڣ�String ��װ�� ʱ��ȣ�ʵ������ӿڱ��뱣֤��equals() 
-	compareTo hashCode��һ���ԣ�����������equasl ���Ϊtrueʱ��compareTo���Ϊ0��
-	ͬʱ������ͬ��hashCode.
-	2��Comparator���Ƚ�����.����ʵ��ĳ����������Զ���Ƚϴ�С��û���޶������԰����κ�����
-	���㷨�Ƚ�.
-	�ǳ��õıȽϹ���.������������Ƚ������������������.
-	3��java�Դ��������㷨�����������򣬿������ñȽϹ���Ӱ��������.
+关于自定义排序：
+	1）Comparable(可比较的).接口不常用，是默认比较规则接口，实现这个接口的类可以进行"自然排序"；
+	java api 中有些类型实现了这个接口：String 包装类 时间等，实现这个接口必须保证：equals() 
+	compareTo hashCode的一致性，当两个对象equasl 结果为true时候，compareTo结果为0，
+	同时具有相同的hashCode.
+	2）Comparator（比较器）.用于实现某两个对象的自定义比较大小，没有限定，可以按照任何属性
+	和算法比较.
+	是常用的比较规律.可以利用这个比较器，进行任意的排序.
+	3）java自带的排序算法都是升序排序，可以利用比较规则影响排序结果.
 	
 ---------------------------------------------------- 02.ts
-		01:39:49   --------- ջ�Ͷ��� ---------------------
+		01:39:49   --------- 栈和队列 ---------------------
 
-		02��07��00 ------------ map�ӿ� -------------------
+		02：07：00 ------------ map接口 -------------------
 
-Map:����key����value,key�ǲ��ظ���value�����ظ���
-	Map�ĳ���ʵ������HashMapɢ�б�����ɢ���㷨ʵ�ֵģ��м�������Ĳ�ѯ���ܣ������
-	˳���ѯ�������㡣
-	��ѯ���ܣ�������n�����ݣ��ҵ�����ĳ���������ĵ�ʱ��ɱ���һ���������ѵĲ���Ϊ�ⶨ��
-	˳����ң�n list.indexOf() list.contains()
-	2�ֲ��ң���2Ϊ��n�Ķ��� TreeMap:get() containsKey() -- 2��(�۰�)���ҵ�ǰ�������ǰ�������߽������е�����
-	ɢ�в��ң�<3 HashMap:get() containsKey()
-hashcode() �� equals()��һ�ԣ�Ҫôһ����д��Ҫôһ����д��
-1.������ȵ�ʱ��hashCode()��ֵһ��һ����
-2.���󲻵ȵ�ʱ��hashCode()��ֵһ���ǲ�ͬ�ģ�
-3.hashCode()���ȶ�����ģ������ۺ�ʱ�εأ�"Tom"��hashCode()ֵ����84274��
+Map:根据key查找value,key是不重复，value可以重复。
+	Map的常见实现类是HashMap散列表，是散列算法实现的，有及其优秀的查询性能！相对于
+	顺序查询性能优秀。
+	查询性能：假如有n个数据，找到其中某个数据消耗的时间成本，一般以最困难的查找为测定。
+	顺序查找：n list.indexOf() list.contains()
+	2分查找：以2为底n的对数 TreeMap:get() containsKey() -- 2分(折半)查找的前提条件是按升序或者降序排列的数据
+	散列查找：<3 HashMap:get() containsKey()
+hashcode() 和 equals()是一对，要么一起重写，要么一起不重写。
+1.对象相等的时候，hashCode()的值一定一样；
+2.对象不等的时候，hashCode()的值一般是不同的；
+3.hashCode()是稳定不变的，即无论何时何地，"Tom"的hashCode()值都是84274。
 
-1��������±���λ���ʣ����ܷǳ���
-2������key��hashCode()ͨ���㷨ӳ�䵽�����±�Ĳ��Ҷ���ķ�����
+1）数组的下表定位访问，性能非常好
+2）根据key的hashCode()通过算法映射到数组下标的查找对象的方法。
 
-ɢ�б��������(put)��(Ҳ��hashcode��equals��������ɶԴ��ڵ�ԭ��)
-	1�����key��hashCode(),����ɢ���㷨ӳ�䵽
-	ɢ�б�������"ɢ��Ͱ"��λ�ã�����ɢ��Ͱ��ʹ��
-	key.equals()������һ�Ƚ�key,ȷ��λ�ã�����(�滻)���ݡ�
-ɢ�б����ҹ���(get)��
-	2������key����value(����):���key��hashCode(),
-	����ɢ���㷨ӳ�䵽ɢ�б�������"ɢ��Ͱ"��λ�ã�
-	key.equals()������һ�Ƚ�key,ȷ��λ�ã���ȡ
-	���λ�õ�����(value),���û�����ݣ��ͷ���null.
+散列表插入过程(put)：(也是hashcode和equals方法必须成对存在的原因)
+	1）获得key的hashCode(),利用散列算法映射到
+	散列表数组中"散列桶"的位置，遍历散列桶，使用
+	key.equals()方法逐一比较key,确定位置，添加(替换)数据。
+散列表查找过程(get)：
+	2）根据key查找value(数据):获得key的hashCode(),
+	利用散列算法映射到散列表数组中"散列桶"的位置，
+	key.equals()方法逐一比较key,确定位置，获取
+	这个位置的数据(value),如果没有数据，就返回null.
 
-ɢ�б���Ĭ��װ��������75%��
-װ������ �� Ԫ������  �� ɢ�б�������������ֵ��
-һ��ʵ�������ı�ֵ����װ�����ӣ�ɢ�б������ݲ�����ɢ�У�
-��������ɢ�д��������ɢ�б����ܡ�	
+散列表的默认装载因子是75%。
+装载因子 是 元素数量  和 散列表的容量的最大比值。
+一旦实际容量的比值超过装载因子，散列表将扩容并重新散列，
+减少重新散列次数将提高散列表性能。	
 
 
 ------------------------------------------------- 03.ts
-		02:08:30 --------------- Map�ı��� -------------------------------
-map.containsKey : �жϼ������Ƿ����key ��Ӧ�� value
-Math.max(value,v) : �����������е����ֵ
-map�ķ�����ֻ�ܷŰ�װ�࣬�����ǻ�������������int,char,...
-1������key�ĵ���
+		02:08:30 --------------- Map的遍历 -------------------------------
+map.containsKey : 判断集合中是否存在key 对应的 value
+Math.max(value,v) : 返回两个数中的最大值
+map的泛型中只能放包装类，不能是基本数据类型如int,char,...
+1）利用key的迭代
 	|	Set<Object> keys = map.keySet();
 	|	for(Object key:keys){Object value = map.get(key);}
 ------------------------------------------------- 04.ts
-2������entry(��Ŀ)�ĵ�����
-	Entry��Map��һ���ڲ��ӿڣ�����java.unit.Mapû�ã������뵥������java.util.Map.Entry
+2）利用entry(条目)的迭代，
+	Entry是Map的一个内部接口，导入java.unit.Map没用，还必须单独导入java.util.Map.Entry
 	|	Set<Entry<String,Integer>> entrySet = map.entrySet();
 	|	for(Entry entry : entrySet){
 	|		String key = entry.getKey();
 	|		int value = entry.getValue();}
-Random random = new Random(1); -- ��the art of computer perogramming,volume 2��
-	1) ��ʹ��new Random(1)���������������������
-	��������̶������У�����ʵ������������֡�(���Ա�����)
-	2) new Randow() ʵ�����ǵ�����new Randow(��ǰʱ��)
+Random random = new Random(1); -- 《the art of computer perogramming,volume 2》
+	1) 当使用new Random(1)创建随机数发生器，产生
+	的随机数固定的序列，可以实现随机场景重现。(可以被作弊)
+	2) new Randow() 实际上是调用了new Randow(当前时间)
 	
-ΪʲôҪ��Map���е�����
-	1����ΪMap�ṩ���㷨��������Ҫ��ʱ�򣬾���Ҫʹ�õ���ʵ���㷨��
-	�����Map�����ݽ����Զ����ʽ���.
-	2����ε�����
-		A ����Key���е���
-		B ����Entry(key:value)���е���
-		C ��Value���е���������ʹ�ã�
-	3�������Ĵ�����ģʽ���ġ�
+为什么要对Map进行迭代？
+	1）因为Map提供的算法不能满足要求时候，就需要使用迭代实现算法。
+	比如对Map的内容进行自定义格式输出.
+	2）如何迭代：
+		A 利用Key进行迭代
+		B 利用Entry(key:value)进行迭代
+		C 对Value进行迭代（很少使用）
+	3）迭代的代码是模式化的。
 	
-map �ķ�����
+map 的方法：
 	put get containsKey keySet entrySet remove
 	clear size isEmpty containsValue
 	
-Java �������е�API�඼����д�ˣ�������StringBuilder��
+Java 几乎所有的API类都是重写了：（除了StringBuilder）
 	toString equals hashcode
 
-��ΪMap�е�keyһ��Ҫ�ܺõ�ʵ��equals hashCode����ɶ�ʵ�֣����ǵ�
-��������equals���ʱ��һ��������ͬ��HashCode.�����������ͬ(����)
-��ʱ�������в�ͬhashCode.
+作为Map中的key一定要很好的实现equals hashCode必须成对实现，就是当
+两个对象equals相等时候，一定具有相同的HashCode.如果两个对象不同(不等)
+的时候尽量具有不同hashCode.
 
-����get/put/remove����������hashCode����Ͱ��λ��,
-������equals�Ƚ�Ԫ�ص�λ��!
+无论get/put/remove都是先利用hashCode计算桶的位置,
+再利用equals比较元素的位置!
 
-���hashcode��ֵ���ȶ�������û�гɶ���д�������Hashmap�Ĺ������ϣ�
+如果hashcode的值不稳定，或者没有成对重写，会造成Hashmap的工作故障！
 
-Collection ��contains()����ÿ��Ԫ��equals������
-���û�кܺõ���дequals��������ֹ������ϡ�
+Collection 的contains()调用每个元素equals方法，
+如果没有很好的重写equals方法会出现工作故障。
 
 LinkedhashMap PK HashMap:
-	LinkedHashMap -> �ܹ�������������Ԫ�ص�����˳��.
-	HashMap:��ɢ��˳�򣬲��ܱ���Ԫ��˳��.
+	LinkedHashMap -> 能够利用链表保持元素的添加顺序.
+	HashMap:是散列顺序，不能保持元素顺序.
 	
 
 		02:20:29----------------------- File -------------------
-new File() ֻ�Ǵ����ڴ���󣬲�������Ӳ�̴����ļ������ļ��С�
-File���������ļ���Ҳ���Դ����ļ��С�
-File.separator����ʵ��Ŀ¼�ּ�(��java�У�������unix,linux,windows,��������"/"��Ϊ·���ķָ���).
+new File() 只是创建内存对象，并不是在硬盘创建文件或者文件夹。
+File类对象代表文件，也可以代表文件夹。
+File.separator用来实现目录分级(在java中，不管是unix,linux,windows,都可以用"/"作为路径的分隔符).
 
-�������������Ҫ���� �ļ�/�ļ���ʱ�򣬾���Ҫʹ��File API.
-���ʹ��File API
-	 1�������� new File(pathname)
-		A ������ζ��� pathname(windows/Linux/Unix)
-			3�����
-			����:"demo/hello.txt" ͨ��,Java File���Զ���Ӧ��������Բ���֤��
-	*2��ʹ�ù����������Ķ���ֻ���ڴ���󣬲����Ǵ����ϵ��ļ�/�ļ��У�
-	 3��File���ṩ��API���������Ӳ�����Ƿ����ļ�
+如果在软件中需要操作 文件/文件夹时候，就需要使用File API.
+如何使用File API
+	 1）构造器 new File(pathname)
+		A 参数如何定义 pathname(windows/Linux/Unix)
+			3种情况
+			常用:"demo/hello.txt" 通用,Java File会自动适应（别的语言不保证）
+	*2）使用构造器创建的对象，只是内存对象，并不是磁盘上的文件/文件夹！
+	 3）File类提供了API方法，检查硬盘上是否有文件
 	 
 	 
-ʲô���ļ�ϵͳ
-	����ϵͳ����������������
-	����û��ִ��֮ǰ���Ǵ����ϵ�����+�����ļ���
-	��:QQ					QQ.exe
-	�����ļ��������ļ�ϵͳ������
+什么是文件系统
+	操作系统：管理软件的软件
+	软件没有执行之前：是磁盘上的数据+程序文件，
+	如:QQ					QQ.exe
+	属于文件管理：文件系统管理。
 	
-	��������ִ�У�����ִ�еĳ����Ϊ���̡�
-		���̹��������ȵ���
-	�������еĳ�����ռ���ڴ棺�ڴ������
+	软件正在执行：正在执行的程序称为进程。
+		进程管理：进度调度
+	正在运行的程序是占用内存：内存管理。
 	
-�ļ�ϵͳ��������ι���(crud ���� ���� �޸� ɾ��)
-	1���ļ�ϵͳ�������ṹ
-		NTFS FAT16 FAT32 exFAT(�Ƚ���) HPFS(mac���ļ�ϵͳ) Ext3(unix���ļ�ϵͳ)
-	2���ļ�ϵͳ���߼��ṹ
+文件系统管理：如何管理(crud 创建 查找 修改 删除)
+	1）文件系统的物理结构
+		NTFS FAT16 FAT32 exFAT(比较新) HPFS(mac的文件系统) Ext3(unix的文件系统)
+	2）文件系统的逻辑结构
 		windows
 			c:\
 				|--Windows
@@ -199,19 +199,27 @@ File.separator����ʵ��Ŀ¼�ּ�(��java�У�������unix,linux,windows,��������"/"���
 			/
 				|--home
 					|--soft01
-�ļ�ϵͳ�����������ļ�ϵͳ���������߼��ṹ��
-�ṩ�ļ�/�ļ��е�"��ɾ�Ĳ�" ������
+文件系统管理：管理文件系统的物理和逻辑结构，
+提供文件/文件夹的"增删改查" 操作。
 
-File API�����ṩ�ڳ����н����ļ�����������
-Ҳ������java�����н��� �ļ�/�ļ��� ��ɾ�Ĳ������
+File API可以提供在程序中进行文件管理操作，
+也就是在java软件中进行 文件/文件夹 增删改查操作。
 
-File API �ṩ�˷������ļ�/�ļ��� ��ɾ�Ĳ����
-1��������:ֻ�Ǵ����ڴ���󣬲��Ǵ��������ļ�
+File API 提供了方法：文件/文件夹 增删改查操作
+1）构造器:只是创建内存对象，不是创建磁盘文件
 	new File(pathname)
 	new File(parent,path)
-2���˶�����Ӳ�̵����Ƿ����?
-	ʹ��File API���� exist() ����ļ�/�ļ����Ƿ����
+2）此对象在硬盘到底是否存在?
+	使用File API方法 exist() 检查文件/文件夹是否存在
 	
-1.�ļ���Ϣ
-�ļ���С int���ֻ��2g(-2^16~2^16-1),�����ã�����java�з��ص���long���͡�
-2.Ŀ¼��Ϣ
+1.文件信息
+文件大小 int最大只能2g(-2^16~2^16-1),不够用，所以java中返回的是long类型。
+2.目录信息
+
+------------------------------------------------- 06.ts
+		----------------------- RandomAccessFile
+理解RandomAccessFile的前提：
+	文件是什么：是一个以byte为单位的数据序列。
+			每个数据单元有序号对应：0~file.length()-1
+	读写文件按照序号位置读写，这个序号位置称为文件指针(File Pointers),
+	如果文件指针到达了file.length(),到达EOF(End Of File)文件的末尾.

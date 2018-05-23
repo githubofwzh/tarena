@@ -5,7 +5,7 @@ import java.io.FileFilter;
 
 /**
  * @author levono
- * ÎÄ¼ş¹ıÂËÆ÷µÄ½éÉÜ
+ * æ–‡ä»¶è¿‡æ»¤å™¨çš„ä»‹ç»
  */
 public class FileFilterTest4 {
 	public static void main(String[] args) {
@@ -14,15 +14,15 @@ public class FileFilterTest4 {
 	}
 	
 	/**
-	 * ÎÄ¼ş¹ıÂËÆ÷£ºFileFilter
-	 * listfiles(FileFilter)´îÅäÊ¹ÓÃ
+	 * æ–‡ä»¶è¿‡æ»¤å™¨ï¼šFileFilter
+	 * listfiles(FileFilter)æ­é…ä½¿ç”¨
 	 */
 	public static void test() {
-		//FileFilterÊÇ½Ó¿Ú Filter:¹ıÂËÆ÷
-		//ÎÄ¼ş¹ıÂËÆ÷£ºÉùÃ÷µÄÎÄ¼ş¹ıÂË¹æÔò£¨·½·¨£©
-		//--¹ıÂËÆ÷ÖĞ·µ»ØtrueµÄ²Å»á±»½ÓÊÜ
+		//FileFilteræ˜¯æ¥å£ Filter:è¿‡æ»¤å™¨
+		//æ–‡ä»¶è¿‡æ»¤å™¨ï¼šå£°æ˜çš„æ–‡ä»¶è¿‡æ»¤è§„åˆ™ï¼ˆæ–¹æ³•ï¼‰
+		//--è¿‡æ»¤å™¨ä¸­è¿”å›trueçš„æ‰ä¼šè¢«æ¥å—
 		FileFilter filter = new FileFilter() {
-			//¹æÔò£º½ÓÊÜÎÄ¼ş£¬¾Ü¾øÎÄ¼ş¼Ğ
+			//è§„åˆ™ï¼šæ¥å—æ–‡ä»¶ï¼Œæ‹’ç»æ–‡ä»¶å¤¹
 			public boolean accept(File pathname) {
 				return pathname.isFile();
 			}
@@ -31,23 +31,23 @@ public class FileFilterTest4 {
 		File f2 = new File("D:/Git/gitdemo/tarena/tarena/.classpath");
 		System.out.println(filter.accept(f1));
 		System.out.println(filter.accept(f2));
-		//ËµÃ÷£ºfilterÖ»ÄÜ½ÓÊÜÎÄ¼ş
-		//ĞŞ¸Äaccept·½·¨¿ÉÒÔ¸Ä±ä½ÓÊÜ½á¹û£¡
-		//´ø×Å¹ıÂË(½ÓÊÜÌõ¼ş)µÄ²éÑ¯ÎÄ¼ş¼ĞµÄÄÚÈİ
+		//è¯´æ˜ï¼šfilteråªèƒ½æ¥å—æ–‡ä»¶
+		//ä¿®æ”¹acceptæ–¹æ³•å¯ä»¥æ”¹å˜æ¥å—ç»“æœï¼
+		//å¸¦ç€è¿‡æ»¤(æ¥å—æ¡ä»¶)çš„æŸ¥è¯¢æ–‡ä»¶å¤¹çš„å†…å®¹
 		File dir = new File("C:/Windows");
-		//filter ÊÇ¹ıÂËÌõ¼ş£¬listFiles»á½«dirÖĞÃ¿¸ö
-		//×ÓÏîÄ¿sub½»¸øaccept(sub)£¬Èç¹û½ÓÊÜ£¬·µ»Øtrue
-		//¾Í×÷Îª·µ»ØÖµ·Åµ½Êı×éÖĞ
+		//filter æ˜¯è¿‡æ»¤æ¡ä»¶ï¼ŒlistFilesä¼šå°†dirä¸­æ¯ä¸ª
+		//å­é¡¹ç›®subäº¤ç»™accept(sub)ï¼Œå¦‚æœæ¥å—ï¼Œè¿”å›true
+		//å°±ä½œä¸ºè¿”å›å€¼æ”¾åˆ°æ•°ç»„ä¸­
 		File[] files = dir.listFiles(filter);
-		//files Êı×éÖĞÖ»ÓĞÎÄ¼ş£¬Ã»ÓĞÎÄ¼ş¼Ğ
+		//files æ•°ç»„ä¸­åªæœ‰æ–‡ä»¶ï¼Œæ²¡æœ‰æ–‡ä»¶å¤¹
 		for(File file : files) {
 			System.out.println(file);
 		}
 	}
 	
 	/**
-	 * ²éÕÒÏÔÊ¾Ä¿Â¼ÏÂµÄ×ÓÄ¿Â¼
-	 * ²âÊÔÖ»ÄÜ½ÓÊÜÎÄ¼ş¼ĞµÄ¹ıÂËÆ÷
+	 * æŸ¥æ‰¾æ˜¾ç¤ºç›®å½•ä¸‹çš„å­ç›®å½•
+	 * æµ‹è¯•åªèƒ½æ¥å—æ–‡ä»¶å¤¹çš„è¿‡æ»¤å™¨
 	 */
 	public static void test2() {
 		File dir = new File("C:/Windows");

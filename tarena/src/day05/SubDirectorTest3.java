@@ -9,20 +9,20 @@ public class SubDirectorTest3 {
 	}
 	
 	/**
-	 * ²é¿´ÎÄ¼ş¼ĞÄÚÈİ
+	 * æŸ¥çœ‹æ–‡ä»¶å¤¹å†…å®¹
 	 * listFiles()
 	 */
 	public static void test1() {
-		// »ñÈ¡Ò»¸öÎÄ¼ş¼ĞµÄÈ«²¿ÄÚÈİ
+		// è·å–ä¸€ä¸ªæ–‡ä»¶å¤¹çš„å…¨éƒ¨å†…å®¹
 		File dir = new File(".");
 		File dir2 = new File("C:/Windows");
-		// »ñÈ¡dirÎÄ¼ş¼ĞµÄÈ«²¿ÄÚÈİ(È«²¿º¢×Ó)
+		// è·å–diræ–‡ä»¶å¤¹çš„å…¨éƒ¨å†…å®¹(å…¨éƒ¨å­©å­)
 		File[] files = dir.listFiles();
 		Arrays.sort(files);
 		//System.out.println(Arrays.toString(files));
 		for(File file : files) {
-			//Èç¹ûÊÇÎÄ¼ş¼Ğ¾ÍÊä³ö[ÎÄ¼ş¼Ğ]
-			//ÎÄ¼şÃûÖ±½ÓÊä³ö
+			//å¦‚æœæ˜¯æ–‡ä»¶å¤¹å°±è¾“å‡º[æ–‡ä»¶å¤¹]
+			//æ–‡ä»¶åç›´æ¥è¾“å‡º
 			if(file.isDirectory()) {
 				System.out.println("["+file+"]");
 			}else

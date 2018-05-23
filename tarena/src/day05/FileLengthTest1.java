@@ -18,9 +18,9 @@ public class FileLengthTest1 {
 	}
 	
 	/**
-	 * ²âÊÔFileµÄÎÄ¼şĞÅÏ¢²é¿´·½·¨
-	 * file.length() ²é¿´ÎÄ¼şµÄ´óĞ¡ (µ¥Î»£ºbyte)£»Èç¹ûÊÇÎÄ¼ş¼Ğ£¬·µ»Ø0byte
-	 * file.lastModified() ²é¿´ÎÄ¼ş×îºóĞŞ¸ÄµÄÊ±¼ä
+	 * æµ‹è¯•Fileçš„æ–‡ä»¶ä¿¡æ¯æŸ¥çœ‹æ–¹æ³•
+	 * file.length() æŸ¥çœ‹æ–‡ä»¶çš„å¤§å° (å•ä½ï¼šbyte)ï¼›å¦‚æœæ˜¯æ–‡ä»¶å¤¹ï¼Œè¿”å›0byte
+	 * file.lastModified() æŸ¥çœ‹æ–‡ä»¶æœ€åä¿®æ”¹çš„æ—¶é—´
 	 */
 	public static void test() {
 		String path = "D:/googledownload/Stools/CentOS-7-x86_64-DVD-1708.iso";
@@ -35,39 +35,39 @@ public class FileLengthTest1 {
 	
 	/**
 	 * @throws IOException
-	 * Ïà¶ÔÂ·¾¶  ºÍ ¾ø¶ÔÂ·¾¶µÄÀí½â
+	 * ç›¸å¯¹è·¯å¾„  å’Œ ç»å¯¹è·¯å¾„çš„ç†è§£
 	 * getAbsolutePath() 
-	 * getCanonicalPath() ±ê×¼µÄ¾ø¶ÔÂ·¾¶
+	 * getCanonicalPath() æ ‡å‡†çš„ç»å¯¹è·¯å¾„
 	 */
 	public static void test2() throws IOException {
-		//¾ø¶ÔÂ·¾¶ºÍÏà¶ÔÂ·¾¶
-		//¾ø¶ÔÂ·¾¶£º´Ó/¿ªÊ¼µÄÂ·¾¶
-		//Ïà¶ÔÂ·¾¶£º´Óµ±Ç°Ä¿Â¼¿ªÊ¼£¬JavaÖĞÊÇ
-		//javaÈí¼şµÄÆô¶¯Ä¿Â¼£¬ÔÚeclipseÖĞÊÇÏîÄ¿
-		//ËùÔÚµÄÎÄ¼ş¼Ğ¡£
-		//new File(".")Ê¹ÓÃÏà¶ÔÂ·¾¶´´½¨file¶ÔÏó
-		//.µÄ¾ø¶ÔÎ»ÖÃ£¨¾ø¶ÔÂ·¾¶£©ÔÚÄÄÀï£¿
+		//ç»å¯¹è·¯å¾„å’Œç›¸å¯¹è·¯å¾„
+		//ç»å¯¹è·¯å¾„ï¼šä»/å¼€å§‹çš„è·¯å¾„
+		//ç›¸å¯¹è·¯å¾„ï¼šä»å½“å‰ç›®å½•å¼€å§‹ï¼ŒJavaä¸­æ˜¯
+		//javaè½¯ä»¶çš„å¯åŠ¨ç›®å½•ï¼Œåœ¨eclipseä¸­æ˜¯é¡¹ç›®
+		//æ‰€åœ¨çš„æ–‡ä»¶å¤¹ã€‚
+		//new File(".")ä½¿ç”¨ç›¸å¯¹è·¯å¾„åˆ›å»ºfileå¯¹è±¡
+		//.çš„ç»å¯¹ä½ç½®ï¼ˆç»å¯¹è·¯å¾„ï¼‰åœ¨å“ªé‡Œï¼Ÿ
 		File current = new File("./src");
-		//Absolute ¾ø¶ÔµÄPathÂ·¾¶
+		//Absolute ç»å¯¹çš„Pathè·¯å¾„
 		String path1 = current.getAbsolutePath();
-		//Canonical ¹æ·¶µÄ¾ø¶ÔÂ·¾¶£¨±ê×¼µÄ£©
+		//Canonical è§„èŒƒçš„ç»å¯¹è·¯å¾„ï¼ˆæ ‡å‡†çš„ï¼‰
 		String path2 = current.getCanonicalPath();
 		System.out.println(path1);
 		System.out.println(path2);
 	}
 	
 	/**
-	 * Ôö createNewFile()
+	 * å¢ createNewFile()
 	 */
 	public static void test3() {
-		// ÔÚµ±Ç°Ä¿Â¼£¨eclipseÏîÄ¿ÎÄ¼ş¼Ğ£©ÖĞ´´½¨ĞÂÎÄ¼ş
+		// åœ¨å½“å‰ç›®å½•ï¼ˆeclipseé¡¹ç›®æ–‡ä»¶å¤¹ï¼‰ä¸­åˆ›å»ºæ–°æ–‡ä»¶
 		String path = "demo.txt";
 		File  file = new File(path);
 		boolean success;
 		try {
 			success = file.createNewFile();
 			if(success) {
-				System.out.println("´´½¨³É¹¦");
+				System.out.println("åˆ›å»ºæˆåŠŸ");
 			}
 			System.out.println(file.getCanonicalPath());
 		} catch (IOException e) {
@@ -77,16 +77,16 @@ public class FileLengthTest1 {
 	}
 	
 	/**
-	 * É¾ delete() 
-	 * Ìõ¼ş : Èç¹ûÊÇÎÄ¼ş£¬Ö»ÄÜÉ¾³ıÓĞÉ¾³ıÈ¨ÏŞµÄÎÄ¼ş
-	 * 		Èç¹ûÊÇÎÄ¼ş¼Ğ£¬Ö»ÄÜÉ¾³ı¿ÕÎÄ¼ş¼Ğ£¬¼´Ä¿Â¼ÏÂ²»ÄÜÓĞÈÎºÎ×ÓÎÄ¼ş¼ĞºÍÎÄ¼ş
+	 * åˆ  delete() 
+	 * æ¡ä»¶ : å¦‚æœæ˜¯æ–‡ä»¶ï¼Œåªèƒ½åˆ é™¤æœ‰åˆ é™¤æƒé™çš„æ–‡ä»¶
+	 * 		å¦‚æœæ˜¯æ–‡ä»¶å¤¹ï¼Œåªèƒ½åˆ é™¤ç©ºæ–‡ä»¶å¤¹ï¼Œå³ç›®å½•ä¸‹ä¸èƒ½æœ‰ä»»ä½•å­æ–‡ä»¶å¤¹å’Œæ–‡ä»¶
 	 */
 	public static void test4() {
-		//É¾³ıÎÄ¼ş
+		//åˆ é™¤æ–‡ä»¶
 		File file = new File("demo.txt");
 		boolean success = file.delete();
 		if(success) {
-			System.out.println("É¾³ı³É¹¦");
+			System.out.println("åˆ é™¤æˆåŠŸ");
 		}
 		System.out.println(file.exists());
 		

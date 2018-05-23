@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  * @author levono
- * Í³¼Æ¸÷¸öpm2.5µØµãµÄ×î´óÖµ
+ * ç»Ÿè®¡å„ä¸ªpm2.5åœ°ç‚¹çš„æœ€å¤§å€¼
  */
 public class TongJiZuiDaTest1 {
 	public static void main(String[] args) {
@@ -17,51 +17,51 @@ public class TongJiZuiDaTest1 {
 	
 	/**
 	 * @param str
-	 * str ±ØĞëÓĞ¸ñÊ½ÒªÇó£¬"key=value;..",Èç""
+	 * str å¿…é¡»æœ‰æ ¼å¼è¦æ±‚ï¼Œ"key=value;..",å¦‚""
 	 */
 	public static void tjMax(String str) {
 		Map<String ,Integer> map = 
 				new HashMap<String,Integer>();
 		//
 		String[] strs = str.split("[=,;]");
-		//±éÀúÕû¸öÊı×é£¬×é×°³É¼¯ºÏ
+		//éå†æ•´ä¸ªæ•°ç»„ï¼Œç»„è£…æˆé›†åˆ
 		// [key1,value1,key2,value2,key3,value3,...]
 		// 0		1	2		3	4		5	..
 		for(int i = 0; i< strs.length; i+=2) {
 			String key = strs[i];
 			int value = Integer.parseInt(strs[i+1]);
-			if(map.containsKey(key)) {// Èç¹ûkeyÒÑ¾­´æÔÚ£¬ËµÃ÷²»ÊÇµÚÒ»´ÎÍ³¼Æ£¬ĞèÒª¸ú¼¯ºÏÖĞ±£´æ×ÅµÄÊı¾İ¶Ô±È£¬ÖØĞÂ±£´æÒ»¸ö×î´óÖµ£¬±£Ö¤key¶ÔÓ¦µÄvalueÊÇÒ»¸ö×î´óÖµ
+			if(map.containsKey(key)) {// å¦‚æœkeyå·²ç»å­˜åœ¨ï¼Œè¯´æ˜ä¸æ˜¯ç¬¬ä¸€æ¬¡ç»Ÿè®¡ï¼Œéœ€è¦è·Ÿé›†åˆä¸­ä¿å­˜ç€çš„æ•°æ®å¯¹æ¯”ï¼Œé‡æ–°ä¿å­˜ä¸€ä¸ªæœ€å¤§å€¼ï¼Œä¿è¯keyå¯¹åº”çš„valueæ˜¯ä¸€ä¸ªæœ€å¤§å€¼
 				int v = map.get(key);
 				map.put(key, Math.max(value, v));
-			}else {// ËµÃ÷ÊÇµÚÒ»´ÎÍ³¼Æ£¬Ö±½Ó½øĞĞ±£´æ
+			}else {// è¯´æ˜æ˜¯ç¬¬ä¸€æ¬¡ç»Ÿè®¡ï¼Œç›´æ¥è¿›è¡Œä¿å­˜
 				map.put(key, value);
 			}
 		}
 		System.out.println(map);
 		
-		//ÀûÓÃkeyµÄµü´ú£¬ÊµÏÖ½«map½á¹û½øĞĞÊä³ö
-		// 1) µÃµ½ËùÓĞkeyµÄ¼¯ºÏ
-		// 2) µü´úkeyµÄ¼¯ºÏ
-		// 3) ÔÚµü´úÊ±ºò¿ÉÒÔÀûÓÃget»ñÈ¡value
-		System.out.println("ÀûÓÃkeyµÄµü´ú£¬Êä³ö£º" );
+		//åˆ©ç”¨keyçš„è¿­ä»£ï¼Œå®ç°å°†mapç»“æœè¿›è¡Œè¾“å‡º
+		// 1) å¾—åˆ°æ‰€æœ‰keyçš„é›†åˆ
+		// 2) è¿­ä»£keyçš„é›†åˆ
+		// 3) åœ¨è¿­ä»£æ—¶å€™å¯ä»¥åˆ©ç”¨getè·å–value
+		System.out.println("åˆ©ç”¨keyçš„è¿­ä»£ï¼Œè¾“å‡ºï¼š" );
 		Set<String> keySet = map.keySet();
-		// keySet °üº¬ËùÓĞµÄµØµã£ºa,b,c,...
+		// keySet åŒ…å«æ‰€æœ‰çš„åœ°ç‚¹ï¼ša,b,c,...
 		for(String key : keySet) {
 			int value = map.get(key);
-			// key ÊÇµØµã£¬valueÊÇµØµã¶ÔÓ¦µÄ×î´óÖµ
+			// key æ˜¯åœ°ç‚¹ï¼Œvalueæ˜¯åœ°ç‚¹å¯¹åº”çš„æœ€å¤§å€¼
 			System.out.println(key+"|"+value);
 		}
 		
-		//ÀûÓÃentry set ½øĞĞµü´ú
-		//ÕâÀïµÄ·ºĞÍ£º±íÊ¾set¼¯ºÏÖĞµÄÔªËØÊÇEntryÀàĞÍ
-		//¶øEntryÖĞµÄÊôĞÔÊÇString ºÍ IntegerÀàĞÍ
-		// Entry(ÌõÄ¿)£ºÊÇMapµÄÒ»¸öÄÚ²¿Àà½Ó¿Ú£¬±ØĞëµ¼°ü²ÅÄÜÓÃ£¬
+		//åˆ©ç”¨entry set è¿›è¡Œè¿­ä»£
+		//è¿™é‡Œçš„æ³›å‹ï¼šè¡¨ç¤ºseté›†åˆä¸­çš„å…ƒç´ æ˜¯Entryç±»å‹
+		//è€ŒEntryä¸­çš„å±æ€§æ˜¯String å’Œ Integerç±»å‹
+		// Entry(æ¡ç›®)ï¼šæ˜¯Mapçš„ä¸€ä¸ªå†…éƒ¨ç±»æ¥å£ï¼Œå¿…é¡»å¯¼åŒ…æ‰èƒ½ç”¨ï¼Œ
 		Set<Entry<String , Integer>> entrySet = 
 				map.entrySet();
-		//Ã¿¸öEntryÖĞkeyÊÇStringÀàĞÍ£¬valueÊÇIntegerÀàĞÍ
+		//æ¯ä¸ªEntryä¸­keyæ˜¯Stringç±»å‹ï¼Œvalueæ˜¯Integerç±»å‹
 		for(Entry<String ,Integer> entry : entrySet) {
-			//eÖĞµÄkey¾ÍÊÇÍ³¼ÆµØµã
-			//eÖĞµÄValue¾ÍÊÇpm2.5µÄÖµ
+			//eä¸­çš„keyå°±æ˜¯ç»Ÿè®¡åœ°ç‚¹
+			//eä¸­çš„Valueå°±æ˜¯pm2.5çš„å€¼
 			System.out.println(entry.getKey() + "|" + entry.getValue());
 		}
 		

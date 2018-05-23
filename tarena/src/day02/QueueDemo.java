@@ -6,12 +6,12 @@ import java.util.Queue;
 
 /**
  * @author levono
- * ¶ÓÁĞ£ºfirst input first output (ÏÈ½øÏÈ³ö)½Ó´¥µÄ±È½ÏÉÙ 
- * LinkedListÊµÏÖÁËQueue
- * QueueÀàµÄoffer() poll() peek()·½·¨ÊµÀı
- * 	boolean offer(object) ÊÇ´Ó¶ÓÎ²Ìí¼ÓÒ»¸öÔªËØ£¬Ìí¼Ó³É¹¦·µ»Øtrue
- * 	poll() ´Ó¶ÓÁĞµÄ¶ÔÊ×È¡³ö²¢É¾³ıÔªËØ
- * 	peek() ´Ó¶ÓÁĞµÄ¶ÓÊ×È¡³öµ«ÊÇ²»É¾³ıÔªËØ
+ * é˜Ÿåˆ—ï¼šfirst input first output (å…ˆè¿›å…ˆå‡º)æ¥è§¦çš„æ¯”è¾ƒå°‘ 
+ * LinkedListå®ç°äº†Queue
+ * Queueç±»çš„offer() poll() peek()æ–¹æ³•å®ä¾‹
+ * 	boolean offer(object) æ˜¯ä»é˜Ÿå°¾æ·»åŠ ä¸€ä¸ªå…ƒç´ ï¼Œæ·»åŠ æˆåŠŸè¿”å›true
+ * 	poll() ä»é˜Ÿåˆ—çš„å¯¹é¦–å–å‡ºå¹¶åˆ é™¤å…ƒç´ 
+ * 	peek() ä»é˜Ÿåˆ—çš„é˜Ÿé¦–å–å‡ºä½†æ˜¯ä¸åˆ é™¤å…ƒç´ 
  */
 public class QueueDemo { 
 	public static void main(String[] args) {
@@ -19,35 +19,35 @@ public class QueueDemo {
 	}
 	
 	/**
-	 * ¶ÓÁĞ£ºfirst input first output (ÏÈ½øÏÈ³ö)½Ó´¥µÄ±È½ÏÉÙ 
-	 * LinkedListÊµÏÖÁËQueue
-	 * QueueÀàµÄoffer() poll() peek()·½·¨ÊµÀı
-	 * 	boolean offer(object) ÊÇ´Ó¶ÓÎ²Ìí¼ÓÒ»¸öÔªËØ£¬Ìí¼Ó³É¹¦·µ»Øtrue
-	 * 	poll() ´Ó¶ÓÁĞµÄ¶ÔÊ×È¡³ö²¢É¾³ıÔªËØ
-	 * 	peek() ´Ó¶ÓÁĞµÄ¶ÓÊ×È¡³öµ«ÊÇ²»É¾³ıÔªËØ
+	 * é˜Ÿåˆ—ï¼šfirst input first output (å…ˆè¿›å…ˆå‡º)æ¥è§¦çš„æ¯”è¾ƒå°‘ 
+	 * LinkedListå®ç°äº†Queue
+	 * Queueç±»çš„offer() poll() peek()æ–¹æ³•å®ä¾‹
+	 * 	boolean offer(object) æ˜¯ä»é˜Ÿå°¾æ·»åŠ ä¸€ä¸ªå…ƒç´ ï¼Œæ·»åŠ æˆåŠŸè¿”å›true
+	 * 	poll() ä»é˜Ÿåˆ—çš„å¯¹é¦–å–å‡ºå¹¶åˆ é™¤å…ƒç´ 
+	 * 	peek() ä»é˜Ÿåˆ—çš„é˜Ÿé¦–å–å‡ºä½†æ˜¯ä¸åˆ é™¤å…ƒç´ 
 	 */
 	public static void Queuetest() {
 		Queue<String> queue = new LinkedList<String>();
 		queue.offer("a");
 		queue.offer("b");
 		queue.offer("c");
-		System.out.println(queue);// 1.ÓĞË³Ğò [a, b, c]
-		String str = queue.peek();// 2.ÑéÖ¤ÏÈÈ¡µ½µÄÊÇµÚÒ»¸ö¶ÓÊ×ÔªËØ£¬ÇÒ²»É¾³ı
+		System.out.println(queue);// 1.æœ‰é¡ºåº [a, b, c]
+		String str = queue.peek();// 2.éªŒè¯å…ˆå–åˆ°çš„æ˜¯ç¬¬ä¸€ä¸ªé˜Ÿé¦–å…ƒç´ ï¼Œä¸”ä¸åˆ é™¤
 		System.out.println("str ======= " + str); // str ======= a
 		int i = 0;
-		// 3.ÑéÖ¤poll()È¡µÃÊÇ¶ÓÁĞµÄ¶ÓÊ×ÔªËØÇÒÉ¾³ı¶ÓÁĞÖĞµÄÔªËØ
-		//	queueµÄµÚ1¸öÔªËØ =========a
-		//	queueµÄµÚ2¸öÔªËØ =========b
-		//	queueµÄµÚ3¸öÔªËØ =========c
+		// 3.éªŒè¯poll()å–å¾—æ˜¯é˜Ÿåˆ—çš„é˜Ÿé¦–å…ƒç´ ä¸”åˆ é™¤é˜Ÿåˆ—ä¸­çš„å…ƒç´ 
+		//	queueçš„ç¬¬1ä¸ªå…ƒç´  =========a
+		//	queueçš„ç¬¬2ä¸ªå…ƒç´  =========b
+		//	queueçš„ç¬¬3ä¸ªå…ƒç´  =========c
 		while(queue.size() > 0) {
-			System.out.println("queueµÄµÚ"+(++i)+"¸öÔªËØ =========" + queue.poll());
+			System.out.println("queueçš„ç¬¬"+(++i)+"ä¸ªå…ƒç´  =========" + queue.poll());
 		}
 	}
 	
 	
 	/**
-	 * Ë«¶ÓÁĞ(¶ÓÁĞÁ½¶Ë¶¼¿ÉÒÔ½ø³ö)ºÍÕ»(Ë«¶ÓÁĞµÄÒ»¶Ë·âËÀ£¬Ö»ÄÜ´ÓÍ¬Ò»¸ö¶Ë½ø³ö£ºfirst input last output)
-	 * push() ºÍ pop()
+	 * åŒé˜Ÿåˆ—(é˜Ÿåˆ—ä¸¤ç«¯éƒ½å¯ä»¥è¿›å‡º)å’Œæ ˆ(åŒé˜Ÿåˆ—çš„ä¸€ç«¯å°æ­»ï¼Œåªèƒ½ä»åŒä¸€ä¸ªç«¯è¿›å‡ºï¼šfirst input last output)
+	 * push() å’Œ pop()
 	 * 
 	 */
 	public static void Duquetest() {
@@ -55,16 +55,16 @@ public class QueueDemo {
 		deque.push("a"); // == deque.offerFirst("a");
 		deque.push("b");// == deque.offerFirst("b");
 		deque.push("c");// == deque.offerFirst("c");
-		System.out.println(deque);// 1.ÓĞË³Ğò [a, b, c]
-		String str = deque.peek();// 2.ÑéÖ¤ÏÈÈ¡µ½µÄÊÇµÚÒ»¸ö¶ÓÊ×ÔªËØ£¬ÇÒ²»É¾³ı
+		System.out.println(deque);// 1.æœ‰é¡ºåº [a, b, c]
+		String str = deque.peek();// 2.éªŒè¯å…ˆå–åˆ°çš„æ˜¯ç¬¬ä¸€ä¸ªé˜Ÿé¦–å…ƒç´ ï¼Œä¸”ä¸åˆ é™¤
 		System.out.println("str ======= " + str); // str ======= a
 		int i = 0;
-		// 3.ÑéÖ¤poll()È¡µÃÊÇ¶ÓÁĞµÄ¶ÓÊ×ÔªËØÇÒÉ¾³ı¶ÓÁĞÖĞµÄÔªËØ
-		//	queueµÄµÚ1¸öÔªËØ =========c
-		//	queueµÄµÚ2¸öÔªËØ =========b
-		//	queueµÄµÚ3¸öÔªËØ =========a
+		// 3.éªŒè¯poll()å–å¾—æ˜¯é˜Ÿåˆ—çš„é˜Ÿé¦–å…ƒç´ ä¸”åˆ é™¤é˜Ÿåˆ—ä¸­çš„å…ƒç´ 
+		//	queueçš„ç¬¬1ä¸ªå…ƒç´  =========c
+		//	queueçš„ç¬¬2ä¸ªå…ƒç´  =========b
+		//	queueçš„ç¬¬3ä¸ªå…ƒç´  =========a
 		while(deque.size() > 0) {
-			System.out.println("queueµÄµÚ"+(++i)+"¸öÔªËØ =========" + deque.pop());
+			System.out.println("queueçš„ç¬¬"+(++i)+"ä¸ªå…ƒç´  =========" + deque.pop());
 		}
 	}
 }
