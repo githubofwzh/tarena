@@ -80,7 +80,7 @@ public class RandomAccessFileDemo {
 		return map;
 	}
 	
-	@Test
+	//@Test
 	public void test() throws IOException {
 		RandomAccessFile raf = 
 				new RandomAccessFile("demo3.txt", "rw");
