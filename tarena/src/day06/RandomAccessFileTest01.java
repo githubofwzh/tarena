@@ -6,9 +6,10 @@ import java.io.RandomAccessFile;
 
 public class RandomAccessFileTest01 {
 	public static void main(String[] args) {
-		//testWriteFile();
-		//testRead();
-		testRead2();
+//		testWriteFile();
+//		testRead();
+//		testRead2();
+		testWrite1();
 	}
 	
 	/**
@@ -25,16 +26,16 @@ public class RandomAccessFileTest01 {
 					new RandomAccessFile("demo.dat","rw");
 			long index = raf.getFilePointer();
 			System.out.println(index);
-			raf.write(50);
+			raf.write(50);//1
 			index = raf.getFilePointer();
 			System.out.println(index);
-			raf.write(0xca);
+			raf.write(0xca);//2
 			index = raf.getFilePointer();
 			System.out.println(index);
-			raf.write(256);
+			raf.write(256);//3
 			index = raf.getFilePointer();
 			System.out.println(index);
-			raf.write(0x100);
+			raf.write(0x100);//4
 			index = raf.getFilePointer();
 			System.out.println(index);
 			raf.close();
@@ -59,32 +60,37 @@ public class RandomAccessFileTest01 {
 			RandomAccessFile raf = 
 					new RandomAccessFile("demo.dat","r");
 			long index = raf.getFilePointer();
-			System.out.println(index);
+			System.out.println(index);//0
 			int b = raf.read();
 			System.out.println(
-					Integer.toBinaryString(b));
+					Integer.toBinaryString(b));//50
 			index = raf.getFilePointer();
-			System.out.println(index);
+			System.out.println(index);//1
+			b = raf.read();
+			System.out.println(
+					Integer.toBinaryString(b));//
+			index = raf.getFilePointer();
+			System.out.println(index);//2
 			b = raf.read();
 			System.out.println(
 					Integer.toBinaryString(b));
 			index = raf.getFilePointer();
-			System.out.println(index);
+			System.out.println(index);//3
 			b = raf.read();
 			System.out.println(
 					Integer.toBinaryString(b));
 			index = raf.getFilePointer();
-			System.out.println(index);
+			System.out.println(index);//4
 			b = raf.read();
 			System.out.println(
 					Integer.toBinaryString(b));
-			index = raf.getFilePointer();
+			index = raf.getFilePointer();//4
 			System.out.println(index);
 			b = raf.read();
 			System.out.println(
-					Integer.toBinaryString(b));
+					b);//-1
 			index = raf.getFilePointer();
-			System.out.println(index);
+			System.out.println(index);//4
 			raf.close();
 			
 		} catch (FileNotFoundException e) {
@@ -116,5 +122,25 @@ public class RandomAccessFileTest01 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * 实例:利用byte[]数组批量插入一堆数据
+	 * 		new RandomAccessFile().write(byte[] byte)
+	 */
+	public  static void testWrite1() {
+		try {
+			RandomAccessFile raf = 
+					new RandomAccessFile("demo2.bat","rw");
+			byte[] buf = {50,(byte)202,0,(byte)0xff};
+			raf.write(buf);
+			raf.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
