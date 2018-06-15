@@ -52,13 +52,13 @@ public class CopyFileWithIODemo {
 	 * 使用字节数据就是为了实现顺序读取(固态硬盘没差别)
 	 * @throws IOException
 	 */
-	//@Test
+//	@Test
 	public void CopyFile2() throws IOException {
 		InputStream fis = 
 				new FileInputStream("IO/Copy/srcFile.docx");
 		
 		OutputStream fos = 
-				new FileOutputStream("IO/Copy/copyFile2.docx");
+				new FileOutputStream("IO/Copy/copyFile2.txt");
 		byte[] buf = new byte[1024 * 8];//一次性读取的长度，这里才是读取的内容了
 		int n  ;// 这个是读取的长度
 		while((n = fis.read(buf)) != -1) {
